@@ -17,6 +17,8 @@ class MoviesController < ApplicationController
       ordering,@title_header = {:title => :asc}, 'bg-warning hilite'
     when 'release_date'
       ordering,@date_header = {:release_date => :asc}, 'bg-warning hilite'
+    when 'director'
+      ordering,@director_header = {:director => :asc}, 'bg-warning hilite'
     end
     @all_ratings = Movie.all_ratings
     @selected_ratings = params[:ratings] || session[:ratings] || {}
