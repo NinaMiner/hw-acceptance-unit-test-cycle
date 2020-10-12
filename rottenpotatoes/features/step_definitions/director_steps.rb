@@ -9,3 +9,8 @@ Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |movie, director|
   #pending # Write code here that turns the phrase above into concrete actions
   expect(Movie.find_by_title(movie).director).to eq director
 end
+
+
+When /^(?:|I )follow "Find Movies With Same Director"$/ do |link|
+  click_link("Find Movies With Same Director")
+end
