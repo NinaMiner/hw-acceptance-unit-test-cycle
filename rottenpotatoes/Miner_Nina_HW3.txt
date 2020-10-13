@@ -1,5 +1,3 @@
-https://github.com/NinaMiner/hw-acceptance-unit-test-cycle
-
 Using the default profile...
 Feature: display list of movies filtered by MPAA rating
   As a concerned parent
@@ -73,6 +71,22 @@ Feature: search for a movie by a director
     Then I should be on the home page                                      # features/step_definitions/web_steps.rb:230
     And I should see "'Alien' has no director info"                        # features/step_definitions/web_steps.rb:105
 
+  Scenario: sort movies by director                        # features/search_movie_list.feature:36
+    Given I am on the home page                            # features/step_definitions/web_steps.rb:44
+    When I follow "Director"                               # features/step_definitions/web_steps.rb:56
+    Then I should see "George Lucas" before "Ridley Scott" # features/step_definitions/movies_steps.rb:8
+
+  Scenario: delete a movie                         # features/search_movie_list.feature:41
+    Given I am on the details page for "Star Wars" # features/step_definitions/web_steps.rb:44
+    And I press "Delete"                           # features/step_definitions/web_steps.rb:52
+    Then I should be on the home page              # features/step_definitions/web_steps.rb:230
+    And I should see "Movie 'Star Wars' deleted"   # features/step_definitions/web_steps.rb:105
+
+  Scenario: Create a movie              # features/search_movie_list.feature:47
+    Given I am on the home page         # features/step_definitions/web_steps.rb:44
+    And I follow "Add new movie"        # features/step_definitions/web_steps.rb:56
+    Then I should be on the create page # features/step_definitions/web_steps.rb:230
+
 Feature: display list of movies sorted by different criteria
   As an avid moviegoer
   So that I can quickly browse movies based on my preferences
@@ -101,7 +115,7 @@ Feature: display list of movies sorted by different criteria
     When I follow "Release Date"                            # features/step_definitions/web_steps.rb:56
     Then I should see "Aladdin" before "Amelie"             # features/step_definitions/movies_steps.rb:8
 
-7 scenarios (7 passed)
-39 steps (39 passed)
-0m0.552s
-Coverage report generated for Cucumber Features to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 47 / 59 LOC (79.66%) covered.
+10 scenarios (10 passed)
+52 steps (52 passed)
+0m0.554s
+Coverage report generated for Cucumber Features to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 52 / 59 LOC (88.14%) covered.
