@@ -17,6 +17,10 @@ module NavigationHelpers
     when /^the edit page for "([^"]*)"$/ then edit_movie_path(Movie.find_by_title($1).id)
     when /^the details page for "([^"]*)"$/ then movie_path(Movie.find_by_title($1).id)
     when /^the Same Director page for "([^"]*)"$/ then  search_movie_path(Movie.find_by_title($1).id)
+    when /^the create page$/ then '/movies/new'
+
+    #when /^the New Movie page$/ then new_movie_path()
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

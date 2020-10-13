@@ -32,3 +32,20 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+  
+Scenario: sort movies by director
+  Given I am on the home page
+  When I follow "Director"
+  Then I should see "George Lucas" before "Ridley Scott"
+  
+Scenario: delete a movie
+  Given I am on the details page for "Star Wars"
+  And I press "Delete"
+  Then I should be on the home page
+  And I should see "Movie 'Star Wars' deleted"
+  
+Scenario: Create a movie
+  Given I am on the home page
+  And I follow "Add new movie"
+  Then I should be on the create page
+  

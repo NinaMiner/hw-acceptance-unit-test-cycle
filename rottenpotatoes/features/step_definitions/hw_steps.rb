@@ -27,3 +27,7 @@ Then /I should be on ("the Same Director page") for "([^"]*)"$/ do |search|
     assert_equal path_to(search), current_path
   end
 end
+
+When /I destroy "([^"]*)"/ do |destroy|
+  click_link "Destoy"
+end
