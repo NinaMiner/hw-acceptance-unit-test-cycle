@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe Movie do
   describe '.find_similar_movies' do
-    let!(:movie1) { FactoryGirl.create(:movie, title: 'Catch me if you can', director: 'Steven Spielberg') }
+    let!(:movie1) { FactoryGirl.create(:movie, title: 'UP', director: 'Disney') }
     let!(:movie2) { FactoryGirl.create(:movie, title: 'Hanna', director: 'Michael Miner') }
-    let!(:movie3) { FactoryGirl.create(:movie, title: "Schindler's List", director: 'Steven Spielberg') }
+    let!(:movie3) { FactoryGirl.create(:movie, title: "Pocohantas", director: 'Disney') }
     let!(:movie4) { FactoryGirl.create(:movie, title: "Stop") }
 
     context 'director exists' do
       it 'finds similar movies correctly' do
-        expect(Movie.similar_movies(movie1.title)).to eql(['Catch me if you can', "Schindler's List"])
+        expect(Movie.similar_movies(movie1.title)).to eql(['UP', "Pocohantus"])
         expect(Movie.similar_movies(movie1.title)).to_not include(['Hanna'])
         expect(Movie.similar_movies(movie2.title)).to eql(['Hanna'])
       end
